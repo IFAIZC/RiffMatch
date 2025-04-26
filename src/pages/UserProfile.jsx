@@ -26,9 +26,9 @@ export default function UserProfile() {
   };
 
   // Input change handlers for updating profile data
-  const handleChange = (e, field) => {
+  function handleChange(e, field) {
     setProfileData({ ...profileData, [field]: e.target.value });
-  };
+  }
 
   return (
     <div className="flex items-center justify-center flex-col min-h-screen bg-gray-100">
