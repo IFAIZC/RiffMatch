@@ -7,21 +7,32 @@ export default function Dashboard() {
       <div class="w-4/5 bg-blue-200">
         <h1 className="flex justify-center">RiffMatch</h1>
         {/* will display listed lobbies */}
+        <div className="flex flex-col justify-center items-center h-full">
+          <h3>hello</h3>
+          <h3>hello</h3>
+          <h3>hello</h3>
+          <h3>hello</h3>
+          <h3>hello</h3>
+          <h3>hello</h3>
+          <h3>hello</h3>
+          <h3>hello</h3>
+          <h3>hello</h3>
+        </div>
         <Outlet/>
       </div>
 
       <div class="w-1/5 bg-green-200 flex flex-col justify-around items-center">
         <Link to={"/userprofile"}>
-              <button className="bg-blue-500 text-white px-6 py-2 rounded-md">Profile</button>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md">Profile</button>
         </Link>
 
         <Link to={"/login"}>
-            <button className="rounded-md px-6 py-2 bg-blue-500 text-white ">Log Out</button>
+            <button className="rounded-md px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white ">Log Out</button>
         </Link>
 
 
         <Link to={"/createLobby"}>
-              <button className="bg-blue-500 text-white px-6 py-2 rounded-md">Create Lobby</button>
+              <button className="bg-blue-500 text-white hover:bg-blue-600 px-6 py-2 rounded-md">Create Lobby</button>
         </Link>
       </div>
     </div>
