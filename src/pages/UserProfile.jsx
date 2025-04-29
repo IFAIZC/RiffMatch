@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function UserProfile() {
+export default function UserProfile({user}) {
   // Sample initial data (this could come from a database or API)
   const [profileData, setProfileData] = useState({
-    username: "username",
-    profilePic: "https://via.placeholder.com/150", // Sample URL for the profile pic
     bio: "This is the bio",
     mainInstrument: "Guitar",
     favSong: "Song Title",
@@ -47,7 +45,7 @@ export default function UserProfile() {
         {/* Profile Picture */}
         <div className="flex justify-center mb-6">
           <img
-            src={profileData.profilePic}
+            src={user?.user_metadata?.picture}
             alt=""
             className="rounded-full w-32 h-32 object-cover border-4 border-blue-500"
           />
@@ -55,16 +53,7 @@ export default function UserProfile() {
 
         {/* Username */}
         <div className="mb-4 text-center">
-          {isEditing ? (
-            <input
-              type="text"
-              value={profileData.username}
-              onChange={(e) => handleChange(e, "username")}
-              className="border-2 border-gray-300 p-2 rounded-md w-full mb-4"
-            />
-          ) : (
-            <p className="text-xl font-semibold">{profileData.username}</p>
-          )}
+            <p className="text-xl font-semibold">{user?.user_metadata?.name}</p>
         </div>
 
         {/* Bio */}
