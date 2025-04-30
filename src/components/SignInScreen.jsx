@@ -8,7 +8,7 @@ export default function SignInScreen({ onSignUp }) {
       </div>
 
 
-      <div className="w-100 flex justify-center items-center flex-row rounded-3xl bg-white/45 h-130 shadow-2xl">
+      <div className="w-100 flex justify-center items-center flex-row rounded-3xl bg-white/40 h-130 shadow-2xl">
         <button
           onClick={onSignUp}
           className="bg-blue-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-600">

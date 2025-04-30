@@ -1,27 +1,57 @@
 import UserProfile from "./UserProfile"
 import { Link, Outlet } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
+import { useEffect, useState } from "react"
+import { supabase } from "../../supabaseclient"
 
 export default function Dashboard({user}) {
-
   const {signOut} = useAuth()
+  const [lobbies, setLobbies] = useState([]);
+
+  useEffect(() => {
+    const fetchLobbies = async () => {
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      if (userError) {
+        console.error('Error getting user:', userError);
+        return;
+      }
+  
+      const { data, error } = await supabase
+        .from('lobbies')
+        .select("*")
+        .eq('user_id', user.id);
+  
+      if (error) {
+        console.error('Error fetching lobbies:', error);
+      } else {
+        setLobbies(data);
+      }
+    };
+  
+    fetchLobbies();
+  }, []);
+  
 
   return (
-    <div class="flex h-screen">
-      <div class="w-4/5 bg-blue-200">
+    <div className="flex h-screen">
+      <div className="w-4/5 bg-blue-200">
         <h1 className="flex justify-center">RiffMatch</h1>
         {/* will display listed lobbies */}
 
         <div className="flex flex-col justify-items-start items-center h-full gap-2">
-          {/* <LobbyCreation/>
-          <LobbyCreation/>
-          <LobbyCreation/>
-          <LobbyCreation/> */}
+
+        <ul>
+          {lobbies.map((lobby) => (
+            <li key={lobby.id}>
+              <strong>{lobby.name}</strong> - {lobby.description}
+            </li>
+          ))}
+        </ul>
+          
         </div>
-        <Outlet/>
       </div>
 
-      <div class="w-1/5 bg-green-200 flex flex-col justify-around items-center">
+      <div className="w-1/5 bg-green-200 flex flex-col justify-around items-center">
 
       <p className="text-xl font-semibold text-center">{user?.user_metadata?.name}</p>
 
