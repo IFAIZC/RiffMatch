@@ -24,6 +24,7 @@ export default function LobbyCreation() {
     setName('');
     setDescription('');
     console.log('Lobby created', data);
+    window.location.href = '/dashboard'; // use this to redirect after a successful log!
     }
   };
 

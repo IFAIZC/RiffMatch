@@ -40,13 +40,19 @@ export default function Dashboard({user}) {
 
         <div className="flex flex-col justify-items-start items-center h-full gap-2">
 
-        <ul>
+        {/* rendering data from lobbies */}
+
+        {lobbies.length === 0 ? (
+          <p>Fetching Lobbies...</p>
+        ) : (
+          <ul>
           {lobbies.map((lobby) => (
             <li key={lobby.id}>
               <strong>{lobby.name}</strong> - {lobby.description}
             </li>
           ))}
         </ul>
+        )}
           
         </div>
       </div>
