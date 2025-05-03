@@ -1,3 +1,9 @@
+/* In your global CSS (e.g., App.css or index.css) */
+body {
+  font-family: 'Cal Sans', sans-serif;
+}
+
+
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
