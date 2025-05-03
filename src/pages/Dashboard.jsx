@@ -16,10 +16,14 @@ export default function Dashboard({user}) {
           <Link to={"/lobbyCreation"}>
            <button className="bg-blue-500 text-white hover:bg-blue-600 px-6 py-2 rounded-2xl">Create Lobby</button>
           </Link>
+
+          {/* dropdown menu for > logout & view profile */}
           <img
             src={user?.user_metadata?.picture}
             alt=""
             className="rounded-full w-10 h-10 object-cover"/>
+
+
         </div>
       </div>
 
