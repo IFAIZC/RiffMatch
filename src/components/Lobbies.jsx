@@ -6,7 +6,7 @@ export default function Lobbies() {
   
     useEffect(() => {
       const fetchLobbies = async () => {
-        const { data: { user }, error: userError } = await supabase.auth.getUser();
+        const { error: userError } = await supabase.auth.getUser();
         if (userError) {
           console.error('Error getting user:', userError);
           return;
@@ -41,7 +41,7 @@ export default function Lobbies() {
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
       {lobbies.map((lobby) => (
-        <li key={lobby.id} className="border-1 m-2 p-10 flex flex-col rounded-2xl max-w-90 min-w-90 max-h-120 min-h-120 ">
+        <li key={lobby.id} className="border-1 m-2 p-10 flex flex-col rounded-2xl max-w-90 min-w-90 max-h-120 min-h-120 justify-between">
           <strong>{lobby.name}</strong> - {lobby.description}
           <button
               className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">
