@@ -36,9 +36,12 @@ export default function Lobbies() {
         <p>Fetching Lobbies...</p>
       </div>
     ) : (
-      <ul className="flex flex-row overflow-x-auto whitespace-nowrap w-full px-4">
+      <ul
+        className="flex flex-row overflow-x-auto whitespace-nowrap w-full px-4 hide-scrollbar"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
       {lobbies.map((lobby) => (
-        <li key={lobby.id} className="border-1 m-2 p-10 flex flex-col rounded-2xl max-w-90 min-w-90 max-h-150 min-h-150">
+        <li key={lobby.id} className="border-1 m-2 p-10 flex flex-col rounded-2xl max-w-90 min-w-90 max-h-120 min-h-120 ">
           <strong>{lobby.name}</strong> - {lobby.description}
           <button
               className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">
