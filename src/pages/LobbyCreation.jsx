@@ -32,12 +32,40 @@ export default function LobbyCreation() {
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
       <div className="bg-white/80 rounded-2xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6">
         <h2 className="text-2xl font-bold text-center text-blue-700 mb-4">Create Lobby</h2>
+
+        {/* lobby name */}
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Lobby Name"
           className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
+
+        {/* genre name */}
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Genre"
+          className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+
+        {/* skill level */}
+        <select id="skill-level" name="skill-level" className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option value="" disabled selected hidden >Skill Level</option>
+          <option value="begginer">Begginer</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="pro">Pro</option>
+        </select>
+
+        {/* Roles needed */}
+        <select id="skill-level" name="skill-level" className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option value="" disabled selected hidden >Skill Level</option>
+          <option value="begginer">Begginer</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="pro">Pro</option>
+        </select>
+
+        {/* lobby description */}
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
