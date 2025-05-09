@@ -57,6 +57,7 @@ export default function LobbyCreation() {
           <option value="pro">Pro</option>
         </select>
 
+        {/* please redo this! */}
         {/* Roles needed */}
         <select id="skill-level" name="skill-level" className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
           <option value="" disabled selected hidden >Skill Level</option>
