@@ -47,7 +47,7 @@ export default function UserProfile({user}) {
           <img
             src={user?.user_metadata?.picture}
             alt=""
-            className="rounded-full w-32 h-32 object-cover border-4 border-blue-500"
+            className="rounded-full w-32 h-32 object-cover"
           />
         </div>
 

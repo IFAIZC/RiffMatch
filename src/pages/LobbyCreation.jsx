@@ -4,6 +4,9 @@ import { supabase } from "../../supabaseclient";
 export default function LobbyCreation() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [genre,setGenre] = useState('')
+  const [skill,setSkill] = useState('')
+  const [roles,setRoles] = useState('')
 
   async function createLobby() {
     const { data: { user } } = await supabase.auth.getUser();
@@ -14,6 +17,9 @@ export default function LobbyCreation() {
       user_id : user.id,
       name,
       description,
+      genre,
+      skill,
+      roles,
     },
   ]);
 
@@ -27,6 +33,18 @@ export default function LobbyCreation() {
     window.location.href = '/dashboard'; // use this to redirect after a successful log!
     }
   };
+
+  function submitGenre(e) {
+    setGenre(e.target.value)
+  }
+
+  function submitSkillLevel(e) {
+    setSkill(e.target.value)
+  }
+
+  function submitRoles(e) {
+    setRoles(e.target.value)
+  }
 
   return(
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
@@ -42,29 +60,45 @@ export default function LobbyCreation() {
         />
 
         {/* genre name */}
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Genre"
-          className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+        <select id="genre" name="genre" onChange={submitGenre} className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option value="" disabled selected hidden>Select Your Genre</option>
+          <option value="Indie">Indie</option>
+          <option value="Rock">Rock</option>
+          <option value="Grunch">Grunch</option>
+          <option value="Metal">Metal</option>
+        </select>
+
 
         {/* skill level */}
-        <select id="skill-level" name="skill-level" className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <select id="skill-level" name="skill-level" onChange={submitSkillLevel} className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
           <option value="" disabled selected hidden >Skill Level</option>
-          <option value="begginer">Begginer</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="pro">Pro</option>
+          <option value="Begginer">Begginer</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Pro">Pro</option>
         </select>
 
-        {/* please redo this! */}
-        {/* Roles needed */}
-        <select id="skill-level" name="skill-level" className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
-          <option value="" disabled selected hidden >Skill Level</option>
-          <option value="begginer">Begginer</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="pro">Pro</option>
-        </select>
+        {/* core roles */}
+        <div className="flex flex-row w-fit flex-wrap gap-3.5 justify-around">
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Electric Guitarist
+          <input type="checkbox" name="skills" onChange={submitRoles} value="Electric Guitarist"/>        
+          </label>
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Drummer
+          <input type="checkbox" name="skills" onChange={submitRoles} value="Drummer"/>        
+          </label>
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Bassist
+          <input type="checkbox" name="skills" onChange={submitRoles} value="Bassist"/>        
+          </label>
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Vocalist
+          <input type="checkbox" name="skills" onChange={submitRoles} value="Vocalist"/>        
+          </label>
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Acoustic Guitarist
+          <input type="checkbox" name="skills" onChange={submitRoles} value="Acoustic Guitarist"/>        
+          </label>
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Pianist
+          <input type="checkbox" name="skills" onChange={submitRoles} value="Pianist"/>        
+          </label>
+        </div>
+
 
         {/* lobby description */}
         <textarea
