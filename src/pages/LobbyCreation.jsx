@@ -9,6 +9,12 @@ export default function LobbyCreation() {
   const [roles,setRoles] = useState('')
 
   async function createLobby() {
+    // basic handling edge cases * need to improve this soon.
+    if (!name || !description || !genre || !skill || roles.length === 0) {
+      alert("Please fill in all fields before publishing the lobby.");
+      return;
+    }
+
     const { data: { user } } = await supabase.auth.getUser();
     const {data,error} = await supabase
     .from('lobbies')
@@ -29,6 +35,9 @@ export default function LobbyCreation() {
   else {
     setName('');
     setDescription('');
+    setGenre('');
+    setSkill('');
+    setRoles('');
     console.log('Lobby created', data);
     window.location.href = '/dashboard'; // use this to redirect after a successful log!
     }
