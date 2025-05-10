@@ -6,7 +6,7 @@ export default function LobbyCreation() {
   const [description, setDescription] = useState('');
   const [genre,setGenre] = useState('')
   const [skill,setSkill] = useState('')
-  const [roles,setRoles] = useState('')
+  const [roles,setRoles] = useState([]) // changing this to an array, please fix this to make users select more than 1 role and store it. push it to supabase
 
   async function createLobby() {
     // basic handling edge cases * need to improve this soon.
