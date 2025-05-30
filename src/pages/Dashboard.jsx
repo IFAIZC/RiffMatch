@@ -47,6 +47,8 @@ export default function Dashboard({user}) {
         </div>
       </div>
 
+
+        {/* lobbies will appear here */}
         <Lobbies/>
     </div>
   )
