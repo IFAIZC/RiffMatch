@@ -10,10 +10,10 @@ export default function Dashboard({user}) {
     // might need to remove this, changing from veritcal scrolling to horizantal!!
     <div className="h-screen overflow-y-hidden ">
 
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-200 shadow-sm">
 
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">RIFFMATCH</a>
+        <a className="btn btn-ghost text-xl rounded-xl">RIFFMATCH</a>
       </div>
 
       <div className="flex-none">
@@ -36,7 +36,7 @@ export default function Dashboard({user}) {
 
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+              className="menu menu-sm dropdown-content bg-base-300 rounded-box z-1 mt-3 w-52 p-2 shadow">
 
               <Link to={"/userprofile"}>
                 <li>
@@ -53,8 +53,8 @@ export default function Dashboard({user}) {
         </div>
       </div>
 
-        {/* lobbies will appear here */}
-        <Lobbies/>
+      {/* lobbies will appear here */}
+      <Lobbies/>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../../supabaseclient";
+import { Link, Outlet } from "react-router-dom"
 
 export default function LobbyCreation() {
   const [name, setName] = useState('');
@@ -56,9 +57,12 @@ export default function LobbyCreation() {
   }
 
   return(
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
-      <div className="bg-white/80 rounded-2xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6">
-        <h2 className="text-2xl font-bold text-center text-blue-700 mb-4">Create Lobby</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br ">
+      <div className="bg-base-300 rounded-2xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6">
+        <h2 className="text-2xl font-bold text-center mb-4">Create Lobby</h2>
+          {/* <Link to={"/dashboard"}>
+            <button className="bg-red-500 text-white px-3 py-1 rounded-md ">X</button>
+          </Link>  */}
 
         {/* lobby name */}
         <input
@@ -88,22 +92,22 @@ export default function LobbyCreation() {
 
         {/* core roles */}
         <div className="flex flex-row w-fit flex-wrap gap-3.5 justify-around">
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Electric Guitarist
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Electric Guitarist
           <input type="checkbox" name="skills" onChange={submitRoles} value="Electric Guitarist"/>        
           </label>
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Drummer
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Drummer
           <input type="checkbox" name="skills" onChange={submitRoles} value="Drummer"/>        
           </label>
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Bassist
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Bassist
           <input type="checkbox" name="skills" onChange={submitRoles} value="Bassist"/>        
           </label>
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Vocalist
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Vocalist
           <input type="checkbox" name="skills" onChange={submitRoles} value="Vocalist"/>        
           </label>
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Acoustic Guitarist
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Acoustic Guitarist
           <input type="checkbox" name="skills" onChange={submitRoles} value="Acoustic Guitarist"/>        
           </label>
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded bg-gray-300">Pianist
+          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Pianist
           <input type="checkbox" name="skills" onChange={submitRoles} value="Pianist"/>        
           </label>
         </div>

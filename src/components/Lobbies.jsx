@@ -33,7 +33,7 @@ export default function Lobbies() {
 
     {lobbies.length === 0 ? (
       <div className="flex items-center justify-center w-full h-full">
-        <p>Fetching Lobbies...</p>
+        <span className="loading loading-infinity loading-xl"></span>
       </div>
     ) : (
       <ul
