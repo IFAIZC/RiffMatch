@@ -1,5 +1,3 @@
-// src/App.js
-import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import UserProfile from './pages/UserProfile';
 import Dashboard from './pages/Dashboard';
