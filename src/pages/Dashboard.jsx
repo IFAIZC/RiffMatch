@@ -8,6 +8,7 @@ export default function Dashboard({user}) {
   
   return (
     // might need to remove this, changing from veritcal scrolling to horizantal!!
+    // also, to make the navbar freeze when scrolling the lobbies
     <div className="h-screen overflow-y-hidden ">
 
     <div className="navbar bg-base-200 shadow-sm">

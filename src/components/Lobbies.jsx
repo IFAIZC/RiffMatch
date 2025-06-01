@@ -27,6 +27,7 @@ export default function Lobbies() {
     }, []);
 
 
+    // please re-do the lobby UI
   return (
     <div className="flex flex-col items-center justify-center h-screen">
     {/* rendering data from lobbies */}

@@ -60,6 +60,8 @@ export default function LobbyCreation() {
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br ">
       <div className="bg-base-300 rounded-2xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6">
         <h2 className="text-2xl font-bold text-center mb-4">Create Lobby</h2>
+
+        {/* x button */}
           {/* <Link to={"/dashboard"}>
             <button className="bg-red-500 text-white px-3 py-1 rounded-md ">X</button>
           </Link>  */}
