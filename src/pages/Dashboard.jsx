@@ -14,7 +14,7 @@ export default function Dashboard({user}) {
     <div className="navbar bg-base-200 shadow-sm">
 
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl rounded-xl">RIFFMATCH</a>
+        <a className="btn btn-ghost text-md font-bold rounded-xl">RIFFMATCH</a>
       </div>
 
       <div className="flex-none">
