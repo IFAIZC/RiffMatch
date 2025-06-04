@@ -38,7 +38,7 @@ export default function Lobbies() {
             {lobbies.map((lobby) => (
               <div
                 key={lobby.id}
-                className="border p-6 rounded-2xl bg-white shadow-md"
+                className=" p-6 rounded-2xl bg-base-200 shadow-md"
               >
                 <strong className="block text-lg font-semibold mb-2">{lobby.name}</strong>
                 <p className="text-gray-700 mb-4 break-words">{lobby.description}</p>
