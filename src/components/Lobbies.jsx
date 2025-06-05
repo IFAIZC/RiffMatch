@@ -15,6 +15,7 @@ export default function Lobbies() {
         const { data, error } = await supabase
           .from('lobbies')
           .select("*")
+          .order('created_at', {ascending: false})
     
         if (error) {
           console.error('Error fetching lobbies:', error);
@@ -26,15 +27,14 @@ export default function Lobbies() {
       fetchLobbies();
     }, []);
 
-    // pls redo this lobby UI layout
     return (
-      <div className="flex flex-col items-center justify-center h-screen px-4 py-6">
+      <div className="flex flex-col items-center justify-center h-screen px-4 py-4">
         {lobbies.length === 0 ? (
           <div className="flex items-center justify-center w-full h-full">
             <span className="loading loading-infinity loading-xl"></span>
           </div>
         ) : (
-          <div className="overflow-y-auto w-full max-w-3xl h-full space-y-4">
+          <div className="overflow-y-auto w-full max-w-3xl h-full space-y-4 mb-15">
             {lobbies.map((lobby) => (
               <div
                 key={lobby.id}
