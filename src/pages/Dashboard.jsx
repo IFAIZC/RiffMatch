@@ -47,6 +47,8 @@ export default function Dashboard({user}) {
                 </li>
               </Link>
               {/* <li><a>Settings</a></li> */}
+              <li><a>Your Lobby</a></li>
+              <li><a>Requested Lobby</a></li>
               <li><a onClick={signOut}>Logout</a></li>
             </ul>
 
