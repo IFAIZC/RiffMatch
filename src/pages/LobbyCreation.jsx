@@ -58,7 +58,7 @@ export default function LobbyCreation() {
 
   return(
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br ">
-      <div className="bg-base-300 rounded-2xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6">
+      <div className="bg-base-300 rounded-2xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6 justify-center items-center">
         <h2 className="text-2xl font-bold text-center mb-4">Create Lobby</h2>
 
         {/* x button */}
@@ -71,11 +71,11 @@ export default function LobbyCreation() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Lobby Name"
-          className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="input input-primary"
         />
 
         {/* genre name */}
-        <select id="genre" name="genre" onChange={submitGenre} className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <select id="genre" name="genre" onChange={submitGenre} className="select select-primary">
           <option value="" disabled selected hidden>Select Your Genre</option>
           <option value="Indie">Indie</option>
           <option value="Rock">Rock</option>
@@ -83,9 +83,8 @@ export default function LobbyCreation() {
           <option value="Metal">Metal</option>
         </select>
 
-
         {/* skill level */}
-        <select id="skill-level" name="skill-level" onChange={submitSkillLevel} className="border border-blue-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <select id="skill-level" name="skill-level" onChange={submitSkillLevel} className="select select-primary">
           <option value="" disabled selected hidden >Skill Level</option>
           <option value="Begginer">Begginer</option>
           <option value="Intermediate">Intermediate</option>
@@ -120,11 +119,11 @@ export default function LobbyCreation() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Description"
-          className="border border-blue-300 rounded-md px-4 py-2 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="textarea textarea-primary"
         ></textarea>
         <button
           onClick={createLobby}
-          className="bg-blue-500 text-white hover:bg-blue-600 px-6 py-2 rounded-md font-semibold shadow-md transition-all duration-150"
+          className="btn btn-primary"
         >
           Publish Lobby
         </button>

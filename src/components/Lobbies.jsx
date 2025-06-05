@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseclient";
 
-export default function Lobbies() {
+export default function Lobbies({user}) {
   const [lobbies, setLobbies] = useState([]);
   
     useEffect(() => {
@@ -40,11 +40,31 @@ export default function Lobbies() {
                 key={lobby.id}
                 className=" p-6 rounded-2xl bg-base-300 shadow-md"
               >
-                <strong className="block text-lg font-semibold mb-2">{lobby.name}</strong>
-                <p className="text-gray-700 mb-4 break-words">{lobby.description}</p>
-                <button className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600">
-                  Join Lobby
-                </button>
+
+                {/* redo! please fetch the real owner of lobbies, not the current auth user!!!! take note */}
+                <div role="button" className="btn btn-ghost btn-circle avatar mb-2">
+                  <div className="w-10 rounded-full">
+                    <img
+                    src={user?.user_metadata?.picture || "/user_default.png"}
+                    alt="user-profile"
+                    className="rounded-full w-10 h-10 object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* to add user name and user picture */}
+
+                <div className="mb-8">
+                  <strong className="block text-lg font-bold">{lobby.name}</strong>
+                  <p className="text-sm break-words max-w-4/6">{lobby.description}</p>
+                </div>
+
+                <div className="flex flex-row justify-between items-center">
+                  <p className="text-sm break-words">Genre : {lobby.genre}</p>
+                  <p className="text-sm break-words">Skill Level : {lobby.skill}</p>
+                  <p className="text-sm break-words">Open Role : {lobby.roles}</p>
+                  <button className="btn btn-accent">Join Lobby</button>
+                </div>
               </div>
             ))}
           </div>
