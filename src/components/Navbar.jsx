@@ -35,9 +35,10 @@ export default function Navbar({user}) {
 
                 <Link to={"/userprofile"}>
                   <li>
-                    <a className="justify-between">
+                    <p>
                       Profile
-                    </a>
+                    </p>
+
                   </li>
                 </Link>
                 {/* <li><a>Settings</a></li> */}

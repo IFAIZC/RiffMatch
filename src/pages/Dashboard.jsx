@@ -1,14 +1,12 @@
-import UserProfile from "./UserProfile"
-import { Link, Outlet } from "react-router-dom"
 import Lobbies from "../components/Lobbies"
 import Navbar from "../components/Navbar"
 
-export default function Dashboard() {
+export default function Dashboard({ user }) {
   
   return (
     <div className="h-screen overflow-hidden flex flex-col">
-      <Navbar/>
-      <Lobbies/>
+      <Navbar user={user}/>
+      <Lobbies user={user}/>
     </div>
   )
 }
