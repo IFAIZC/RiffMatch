@@ -27,6 +27,8 @@ export default function LobbyCreation() {
       genre,
       skill,
       roles,
+      creator_name: user.user_metadata.name,
+      creator_picture: user.user_metadata.picture,
     },
   ]);
 
