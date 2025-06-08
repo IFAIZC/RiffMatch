@@ -47,6 +47,10 @@ export default function UserProfile({user}) {
           <img
             src={user?.user_metadata?.picture}
             alt=""
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/user_default.png";
+            }}
             className="rounded-full w-32 h-32 object-cover"
           />
         </div>

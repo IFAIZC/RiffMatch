@@ -52,6 +52,10 @@ export default function Lobbies() {
                     src={lobby.creator_picture || "/user_default.png"}
                     alt="user-profile"
                     className="rounded-full w-10 h-10 object-cover"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "/user_default.png";
+                    }}
                   />
                 </div>
                 <p className="text-sm font-semibold">

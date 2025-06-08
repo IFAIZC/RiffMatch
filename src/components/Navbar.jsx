@@ -23,6 +23,10 @@ export default function Navbar({user}) {
                   <img
                   src={user?.user_metadata?.picture || "/user_default.png"}
                   alt="user-profile"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "/user_default.png";
+                  }}
                   className="rounded-full w-10 h-10 object-cover"
                   />
                 </div>
@@ -31,14 +35,13 @@ export default function Navbar({user}) {
 
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-300 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                className="menu menu-sm dropdown-content bg-base-300 rounded-box z-1 mt-3 w-45 p-2 shadow">
 
                 <Link to={"/userprofile"}>
                   <li>
                     <p>
                       Profile
                     </p>
-
                   </li>
                 </Link>
                 {/* <li><a>Settings</a></li> */}
