@@ -20,7 +20,7 @@ function App() {
 
           <Route path="/dashboard" element={<Dashboard user={session?.user}/>} />
           <Route path="/userprofile" element={<UserProfile user={session?.user} />} />
-          <Route path="/lobbycreation" element={<LobbyCreation />} />
+          <Route path="/lobbycreation" element={<LobbyCreation user={session?.user}  />} />
           <Route path="/test" element={<TestUseEffect />} />
           <Route path="*" element={<SignInScreen onSignUp={signUp} />} />
         </>

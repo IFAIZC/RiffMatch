@@ -8,7 +8,9 @@ export default function Navbar({user}) {
     <div className="navbar bg-base-200 shadow-sm">
 
         <div className="flex-1">
+          <Link to={"/dashboard"}>
           <a className="btn btn-ghost text-md font-bold rounded-xl">RIFFMATCH</a>
+          </Link>
         </div>
 
         <div className="flex-none">

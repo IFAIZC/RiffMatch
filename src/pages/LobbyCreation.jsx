@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { supabase } from "../../supabaseclient";
 import { Link, Outlet } from "react-router-dom"
+import Navbar from "../components/Navbar";
 
-export default function LobbyCreation() {
+export default function LobbyCreation( { user } ) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [genre,setGenre] = useState('')
@@ -59,76 +60,80 @@ export default function LobbyCreation() {
   }
 
   return(
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br ">
-      <div className="bg-base-300 rounded-2xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6 justify-center items-center">
-        <h2 className="text-2xl font-bold text-center mb-4">Create Lobby</h2>
+    <div className="flex flex-col h-screen overflow-hidden">
+      <Navbar user={user} />
+      <div className="flex-1 flex flex-col justify-center items-center">
+        <div className="bg-base-300 rounded-2xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6 justify-center items-center">
+          <h2 className="text-2xl font-bold text-center mb-4">Create Lobby</h2>
 
-        {/* x button */}
-          {/* <Link to={"/dashboard"}>
-            <button className="bg-red-500 text-white px-3 py-1 rounded-md ">X</button>
-          </Link>  */}
+          {/* x button */}
+            {/* <Link to={"/dashboard"}>
+              <button className="bg-red-500 text-white px-3 py-1 rounded-md ">X</button>
+            </Link>  */}
 
-        {/* lobby name */}
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Lobby Name"
-          className="input input-primary"
-        />
+          {/* lobby name */}
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Lobby Name"
+            className="input input-primary"
+          />
 
-        {/* genre name */}
-        <select id="genre" name="genre" onChange={submitGenre} className="select select-primary">
-          <option value="" disabled selected hidden>Select Your Genre</option>
-          <option value="Indie">Indie</option>
-          <option value="Rock">Rock</option>
-          <option value="Grunch">Grunch</option>
-          <option value="Metal">Metal</option>
-        </select>
+          {/* genre name */}
+          <select id="genre" name="genre" onChange={submitGenre} className="select select-primary">
+            <option value="" disabled selected hidden>Select Your Genre</option>
+            <option value="Indie">Indie</option>
+            <option value="Rock">Rock</option>
+            <option value="Grunch">Grunch</option>
+            <option value="Metal">Metal</option>
+          </select>
 
-        {/* skill level */}
-        <select id="skill-level" name="skill-level" onChange={submitSkillLevel} className="select select-primary">
-          <option value="" disabled selected hidden >Skill Level</option>
-          <option value="Begginer">Begginer</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Pro">Pro</option>
-        </select>
+          {/* skill level */}
+          <select id="skill-level" name="skill-level" onChange={submitSkillLevel} className="select select-primary">
+            <option value="" disabled selected hidden >Skill Level</option>
+            <option value="Begginer">Begginer</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Pro">Pro</option>
+          </select>
 
-        {/* core roles */}
-        <div className="flex flex-row w-fit flex-wrap gap-3.5 justify-around">
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Electric Guitarist
-          <input type="checkbox" name="skills" onChange={submitRoles} value="Electric Guitarist"/>        
-          </label>
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Drummer
-          <input type="checkbox" name="skills" onChange={submitRoles} value="Drummer"/>        
-          </label>
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Bassist
-          <input type="checkbox" name="skills" onChange={submitRoles} value="Bassist"/>        
-          </label>
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Vocalist
-          <input type="checkbox" name="skills" onChange={submitRoles} value="Vocalist"/>        
-          </label>
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Acoustic Guitarist
-          <input type="checkbox" name="skills" onChange={submitRoles} value="Acoustic Guitarist"/>        
-          </label>
-          <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Pianist
-          <input type="checkbox" name="skills" onChange={submitRoles} value="Pianist"/>        
-          </label>
+          {/* core roles */}
+          <div className="flex flex-row w-fit flex-wrap gap-3.5 justify-around">
+            <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Electric Guitarist
+            <input type="checkbox" name="skills" onChange={submitRoles} value="Electric Guitarist"/>        
+            </label>
+            <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Drummer
+            <input type="checkbox" name="skills" onChange={submitRoles} value="Drummer"/>        
+            </label>
+            <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Bassist
+            <input type="checkbox" name="skills" onChange={submitRoles} value="Bassist"/>        
+            </label>
+            <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Vocalist
+            <input type="checkbox" name="skills" onChange={submitRoles} value="Vocalist"/>        
+            </label>
+            <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Acoustic Guitarist
+            <input type="checkbox" name="skills" onChange={submitRoles} value="Acoustic Guitarist"/>        
+            </label>
+            <label htmlFor="" className="flex gap-2 p-1.5  rounded ">Pianist
+            <input type="checkbox" name="skills" onChange={submitRoles} value="Pianist"/>        
+            </label>
+          </div>
+
+
+          {/* lobby description */}
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description"
+            className="textarea textarea-primary"
+          ></textarea>
+          <button
+            onClick={createLobby}
+            className="btn btn-primary"
+          >
+            Publish Lobby
+          </button>
         </div>
 
-
-        {/* lobby description */}
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Description"
-          className="textarea textarea-primary"
-        ></textarea>
-        <button
-          onClick={createLobby}
-          className="btn btn-primary"
-        >
-          Publish Lobby
-        </button>
       </div>
     </div>
   )
