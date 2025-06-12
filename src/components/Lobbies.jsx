@@ -40,7 +40,7 @@ export default function Lobbies() {
           <span className="text-lg ">No available lobbies</span>
         </div>
       ) : (
-        <div className="overflow-y-auto w-full max-w-3xl h-full space-y-4 mb-15">
+        <div className="overflow-y-auto min-w-3xl h-full space-y-4 mb-15">
           {lobbies.map((lobby) => (
             <div
               key={lobby.id}

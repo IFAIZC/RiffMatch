@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard';
 import LobbyCreation from './pages/LobbyCreation';
 import useAuth from './hooks/useAuth';
 import SignInScreen from './components/SignInScreen';
+import YourLobby from './pages/YourLobby';
 
 function App() {
   const { session, signUp } = useAuth();
@@ -20,6 +21,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard user={session?.user}/>} />
           <Route path="/userprofile" element={<UserProfile user={session?.user} />} />
           <Route path="/lobbycreation" element={<LobbyCreation user={session?.user}  />} />
+          <Route path="/yourlobby" element={<YourLobby user={session?.user}  />} />
           <Route path="*" element={<SignInScreen onSignUp={signUp} />} />
         </>
       )}

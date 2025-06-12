@@ -9,7 +9,7 @@ export default function Navbar({user}) {
 
         <div className="flex-1">
           <Link to={"/dashboard"}>
-          <a className="btn btn-ghost text-md font-bold rounded-xl">RIFFMATCH</a>
+          <p className="btn btn-ghost text-md font-bold rounded-xl">RIFFMATCH</p>
           </Link>
         </div>
 
@@ -47,7 +47,9 @@ export default function Navbar({user}) {
                   </li>
                 </Link>
                 {/* <li><a>Settings</a></li> */}
-                <li><a>Your Lobby</a></li>
+                <Link to={"/yourlobby"}>
+                  <li><p>Your Lobby</p></li>
+                </Link>
                 <li><a>Requested Lobby</a></li>
                 <li><a onClick={signOut}>Logout</a></li>
               </ul>
