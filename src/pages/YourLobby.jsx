@@ -31,6 +31,11 @@ export default function YourLobby({user}) {
 
     fetchLobbies();
   }, []);
+
+  // i have to link this with a supabase delete logic
+  function deleteLobby() {
+    window.alert("confirm to delete?")
+  }
   
   return (
     <div className="flex flex-col h-screen overflow-hidden">
@@ -82,7 +87,7 @@ export default function YourLobby({user}) {
                 <p className="text-sm break-words">Genre : {lobby.genre}</p>
                 <p className="text-sm break-words">Skill Level : {lobby.skill}</p>
                 <p className="text-sm break-words">Open Role : {lobby.roles}</p>
-                <button className="btn btn-error">Delete</button>
+                <button className="btn btn-error" onClick={deleteLobby} >Delete</button>
               </div>
             </div>
           ))}
