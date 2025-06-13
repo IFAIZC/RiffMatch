@@ -57,7 +57,7 @@ export default function YourLobby({user}) {
               key={lobby.id}
               className=" p-6 rounded-2xl bg-base-300 shadow-md"
             >
-              <div className="flex flex-row items-center gap-2 mb-5">
+              {/* <div className="flex flex-row items-center gap-2 mb-5">
                 <div className="w-10 rounded-full">
                   <img
                     src={lobby.creator_picture || "/user_default.png"}
@@ -72,7 +72,7 @@ export default function YourLobby({user}) {
                 <p className="text-sm font-semibold">
                   {lobby.creator_name || "Unknown User"}
                 </p>
-              </div>
+              </div> */}
 
               <div className="mb-8">
                 <strong className="block text-lg font-bold">
