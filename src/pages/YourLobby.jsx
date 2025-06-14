@@ -33,8 +33,17 @@ export default function YourLobby({user}) {
   }, []);
 
   // i have to link this with a supabase delete logic
-  function deleteLobby() {
-    window.alert("confirm to delete?")
+  async function deleteLobby (lobbyId) {
+    const {error} = await supabase
+      .from("lobbies")
+      .delete()
+      .eq('id', lobbyId)
+
+      if (error) {
+        console.error("Error deleting your lobby:", error);
+      } else {
+        console.log("Lobby has been deleted!")
+      }
   }
   
   return (
@@ -87,7 +96,7 @@ export default function YourLobby({user}) {
                 <p className="text-sm break-words">Genre : {lobby.genre}</p>
                 <p className="text-sm break-words">Skill Level : {lobby.skill}</p>
                 <p className="text-sm break-words">Open Role : {lobby.roles}</p>
-                <button className="btn btn-error" onClick={deleteLobby} >Delete</button>
+                <button className="btn btn-error" onClick={() => deleteLobby(lobby.id)} >Delete</button>
               </div>
             </div>
           ))}
