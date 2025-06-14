@@ -6,29 +6,29 @@ export default function YourLobby({user}) {
   const [lobbies, setLobbies] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchLobbies = async () => {
-      const { error: userError } = await supabase.auth.getUser();
-      if (userError) {
-        console.error("Error getting user:", userError);
-        setLoading(false);
-        return;
-      }
-
-      const { data, error } = await supabase
-        .from("lobbies")
-        .select("*")
-        .eq("user_id" , user.id)
-        .order("created_at", { ascending: false });
-
-      if (error) {
-        console.error("Error fetching lobbies:", error);
-      } else {
-        setLobbies(data);
-      }
+  async function fetchLobbies() {
+    const { error: userError } = await supabase.auth.getUser();
+    if (userError) {
+      console.error("Error getting user:", userError);
       setLoading(false);
-    };
+      return;
+    }
 
+    const { data, error } = await supabase
+      .from("lobbies")
+      .select("*")
+      .eq("user_id" , user.id)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("Error fetching lobbies:", error);
+    } else {
+      setLobbies(data);
+    }
+    setLoading(false);
+  }
+
+  useEffect(() => {
     fetchLobbies();
   }, []);
 
@@ -43,6 +43,7 @@ export default function YourLobby({user}) {
         console.error("Error deleting your lobby:", error);
       } else {
         console.log("Lobby has been deleted!")
+        fetchLobbies();
       }
   }
   
