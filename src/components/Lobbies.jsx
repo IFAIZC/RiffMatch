@@ -4,15 +4,17 @@ import { supabase } from "../../supabaseclient";
 export default function Lobbies() {
   const [lobbies, setLobbies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentUserId, setCurrentUserId] = useState(null);
 
   useEffect(() => {
     const fetchLobbies = async () => {
-      const { error: userError } = await supabase.auth.getUser();
+      const { data : { user }, error: userError } = await supabase.auth.getUser();
       if (userError) {
         console.error("Error getting user:", userError);
         setLoading(false);
         return;
       }
+      setCurrentUserId(user.id);
 
       const { data, error } = await supabase
         .from("lobbies")
@@ -97,7 +99,7 @@ export default function Lobbies() {
                 <p className="text-sm break-words">Genre : {lobby.genre}</p>
                 <p className="text-sm break-words">Skill Level : {lobby.skill}</p>
                 <p className="text-sm break-words">Open Role : {lobby.roles}</p>
-                <button className="btn btn-accent" onClick={()=>{joinLobby(lobby.id)}}>Join Lobby</button>
+                {lobby.user_id !== currentUserId ? <button className="btn btn-accent" onClick={() => { joinLobby(lobby.id); }}>Join Lobby</button> : <button className="btn btn-soft btn-accent">View Lobby</button> }
               </div>
             </div>
           ))}
