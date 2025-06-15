@@ -29,6 +29,27 @@ export default function Lobbies() {
 
     fetchLobbies();
   }, []);
+
+  async function joinLobby(lobbyId) {
+    const { data: { user } } = await supabase.auth.getUser();
+    const {data,error} = await supabase
+    .from("lobbyMembers")
+    .insert([
+      {
+      user_id : user.id,
+      lobby_id: lobbyId,
+      user_name: user.user_metadata.name,
+      user_picture: user.user_metadata.picture,
+      },
+    ]);
+
+    if(error) {
+      console.error("Error on joining the lobby" , error )
+    } else {
+      console.log("You have successfully join the lobby!", data )
+    }
+  }
+
   return (
     <div className="flex flex-col items-center justify-center h-screen px-4 py-4">
       {loading ? (
@@ -76,7 +97,7 @@ export default function Lobbies() {
                 <p className="text-sm break-words">Genre : {lobby.genre}</p>
                 <p className="text-sm break-words">Skill Level : {lobby.skill}</p>
                 <p className="text-sm break-words">Open Role : {lobby.roles}</p>
-                <button className="btn btn-accent">Join Lobby</button>
+                <button className="btn btn-accent" onClick={()=>{joinLobby(lobby.id)}}>Join Lobby</button>
               </div>
             </div>
           ))}
