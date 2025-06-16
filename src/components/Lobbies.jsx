@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabaseclient";
+import { Link } from "react-router-dom";
 
 export default function Lobbies() {
   const [lobbies, setLobbies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentUserId, setCurrentUserId] = useState(null);
 
   useEffect(() => {
     const fetchLobbies = async () => {
-      const { data : { user }, error: userError } = await supabase.auth.getUser();
+      const {error: userError } = await supabase.auth.getUser();
       if (userError) {
         console.error("Error getting user:", userError);
         setLoading(false);
         return;
       }
-      setCurrentUserId(user.id);
 
       const { data, error } = await supabase
         .from("lobbies")
@@ -32,25 +31,25 @@ export default function Lobbies() {
     fetchLobbies();
   }, []);
 
-  async function joinLobby(lobbyId) {
-    const { data: { user } } = await supabase.auth.getUser();
-    const {data,error} = await supabase
-    .from("lobbyMembers")
-    .insert([
-      {
-      user_id : user.id,
-      lobby_id: lobbyId,
-      user_name: user.user_metadata.name,
-      user_picture: user.user_metadata.picture,
-      },
-    ]);
+  // async function joinLobby(lobbyId) {
+  //   const { data: { user } } = await supabase.auth.getUser();
+  //   const {data,error} = await supabase
+  //   .from("lobbyMembers")
+  //   .insert([
+  //     {
+  //     user_id : user.id,
+  //     lobby_id: lobbyId,
+  //     user_name: user.user_metadata.name,
+  //     user_picture: user.user_metadata.picture,
+  //     },
+  //   ]);
 
-    if(error) {
-      console.error("Error on joining the lobby" , error )
-    } else {
-      console.log("You have successfully join the lobby!", data )
-    }
-  }
+  //   if(error) {
+  //     console.error("Error on joining the lobby" , error )
+  //   } else {
+  //     console.log("You have successfully join the lobby!", data )
+  //   }
+  // }
 
   return (
     <div className="flex flex-col items-center justify-center h-screen px-4 py-4">
@@ -99,7 +98,11 @@ export default function Lobbies() {
                 <p className="text-sm break-words">Genre : {lobby.genre}</p>
                 <p className="text-sm break-words">Skill Level : {lobby.skill}</p>
                 <p className="text-sm break-words">Open Role : {lobby.roles}</p>
-                {lobby.user_id !== currentUserId ? <button className="btn btn-accent" onClick={() => { joinLobby(lobby.id); }}>Join Lobby</button> : <button className="btn btn-soft btn-accent">View Lobby</button> }
+
+                {/* i need to use params here to make the page load dynamically */}
+                <Link to={`/viewlobby/${lobby.id}`}>
+                  <button className="btn btn-soft btn-accent">View Lobby</button>
+                </Link>
               </div>
             </div>
           ))}

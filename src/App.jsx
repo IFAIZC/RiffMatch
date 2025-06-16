@@ -5,6 +5,7 @@ import LobbyCreation from './pages/LobbyCreation';
 import useAuth from './hooks/useAuth';
 import SignInScreen from './components/SignInScreen';
 import YourLobby from './pages/YourLobby';
+import ViewLobby from './components/ViewLobby';
 
 function App() {
   const { session, signUp } = useAuth();
@@ -22,6 +23,9 @@ function App() {
           <Route path="/userprofile" element={<UserProfile user={session?.user} />} />
           <Route path="/lobbycreation" element={<LobbyCreation user={session?.user}  />} />
           <Route path="/yourlobby" element={<YourLobby user={session?.user}  />} />
+
+          {/* dynamic page view */}
+          <Route path="/viewlobby/:lobbyId" element={<ViewLobby user={session?.user}  />} />
           <Route path="*" element={<SignInScreen onSignUp={signUp} />} />
         </>
       )}
