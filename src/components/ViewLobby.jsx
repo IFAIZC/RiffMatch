@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { supabase } from "../../supabaseclient";
+import Navbar from "./Navbar";
 
-export default function ViewLobby() {
+export default function ViewLobby({user}) {
   // params reads the lobbyId via URL
   const { lobbyId } = useParams();
 
@@ -10,6 +11,7 @@ export default function ViewLobby() {
   const [lobby, setLobby] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // fetching lobby accordingly to Params
   useEffect(() => {
     const fetchLobby = async () => {
       const { error: userError } = await supabase.auth.getUser();
@@ -23,7 +25,7 @@ export default function ViewLobby() {
         .select("*")
         .eq("id", lobbyId)
         .single();
-        
+
       if (error) {
         console.error("Error fetching lobby:", error);
       } else {
@@ -34,26 +36,66 @@ export default function ViewLobby() {
     fetchLobby();
   }, [lobbyId]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // join lobby function (send user details to supabase)
+  // async function joinLobby(lobbyId) {
+  //   const { data: { user } } = await supabase.auth.getUser();
+  //   const {data,error} = await supabase
+  //   .from("lobbyMembers")
+  //   .insert([
+  //     {
+  //     user_id : user.id,
+  //     lobby_id: lobbyId,
+  //     user_name: user.user_metadata.name,
+  //     user_picture: user.user_metadata.picture,
+  //     },
+  //   ]);
 
-  if (!lobby) {
-    return <div>Lobby not found.</div>;
-  }
+  //   if(error) {
+  //     console.error("Error on joining the lobby" , error )
+  //   } else {
+  //     console.log("You have successfully join the lobby!", data )
+  //   }
+  // }
+
 
   return (
-    <div>
-      <h1>{lobby.creator_name || "Unknown User"}</h1>
-      <img
-        src={lobby.creator_picture || "/user_default.png"}
-        alt="user-profile"
-        className="rounded-full w-10 h-10 object-cover"
-        onError={(e) => {
-          e.target.onerror = null;
-          e.target.src = "/user_default.png";
-        }}
-      />
+    <div className="h-screen overflow-hidden flex flex-col">
+        <Navbar user={user}/>
+        {loading ? (
+        <div className="flex items-center justify-center w-full h-full">
+          <span className="loading loading-infinity loading-xl"></span>
+        </div>
+        // to check if lobby is existed or not. (edge cases handled)
+      ) : lobby === null ? (
+        <div className="flex items-center justify-center w-full h-full">
+          <span className="text-lg ">This lobby does not exist!</span>
+        </div>
+      ) : (
+        <div className="flex justify-center items-center flex-col">
+          <h1>{lobby.creator_name || "Unknown User"}</h1>
+          <img
+            src={lobby.creator_picture || "/user_default.png"}
+            alt="user-profile"
+            className="rounded-full w-10 h-10 object-cover"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/user_default.png";
+            }}
+          />
+          <div className="flex flex-col gap-5">
+            <p>{lobby.name}</p>
+            <p>{lobby.description}</p>
+            <p>{lobby.genre}</p>
+            <p>{lobby.skill}</p>
+            <p>{lobby.roles}</p>
+          </div>
+
+            {/* to add onClick function */}
+            {/* send data to supabase for joined users */}
+            {/* display users who clicked join */}
+          <button className="btn btn-soft btn-accent max-w-40">Join Lobby</button>
+        </div>
+      )}
     </div>
   );
 }
