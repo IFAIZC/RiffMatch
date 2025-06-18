@@ -71,7 +71,7 @@ export default function ViewLobby({user}) {
           <span className="text-lg ">This lobby does not exist!</span>
         </div>
       ) : (
-        <div className="flex justify-center items-center flex-col">
+        <div className="flex mt-10 justify-start items-center flex-col min-h-screen">
           <h1>{lobby.creator_name || "Unknown User"}</h1>
           <img
             src={lobby.creator_picture || "/user_default.png"}
