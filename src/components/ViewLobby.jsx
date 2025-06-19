@@ -72,16 +72,18 @@ export default function ViewLobby({user}) {
         </div>
       ) : (
         <div className="flex mt-10 justify-start items-center flex-col min-h-screen">
-          <h1>{lobby.creator_name || "Unknown User"}</h1>
-          <img
-            src={lobby.creator_picture || "/user_default.png"}
-            alt="user-profile"
-            className="rounded-full w-10 h-10 object-cover"
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "/user_default.png";
-            }}
-          />
+          <div className="flex flex-row gap-5 justify-center items-center">
+            <img
+              src={lobby.creator_picture || "/user_default.png"}
+              alt="user-profile"
+              className="rounded-full w-10 h-10 object-cover"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/user_default.png";
+              }}
+            />
+            <h1>{lobby.creator_name || "Unknown User"}</h1>
+          </div>
           <div className="flex flex-col gap-5">
             <p>{lobby.name}</p>
             <p>{lobby.description}</p>
