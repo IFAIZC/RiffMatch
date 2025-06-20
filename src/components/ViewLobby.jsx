@@ -71,7 +71,7 @@ export default function ViewLobby({user}) {
           <span className="text-lg ">This lobby does not exist!</span>
         </div>
       ) : (
-        <div className="flex mt-10 justify-start items-center flex-col min-h-screen">
+        <div className="flex mt-10 justify-start items-center flex-col min-h-screen gap-10">
           <div className="flex flex-row gap-5 justify-center items-center">
             <img
               src={lobby.creator_picture || "/user_default.png"}
@@ -84,12 +84,12 @@ export default function ViewLobby({user}) {
             />
             <h1>{lobby.creator_name || "Unknown User"}</h1>
           </div>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-row gap-5 ">
             <p>{lobby.name}</p>
             <p>{lobby.description}</p>
-            <p>{lobby.genre}</p>
-            <p>{lobby.skill}</p>
-            <p>{lobby.roles}</p>
+            <p>Genre : {lobby.genre}</p>
+            <p>Skill : {lobby.skill}</p>
+            <p>Open Role : {lobby.roles}</p>
           </div>
 
             {/* to add onClick function */}
