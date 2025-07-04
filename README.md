@@ -21,7 +21,7 @@ I built RiffMatch, a platform that works like a matchmaking lobby for musicians.
 RiffMatch is all about bringing musicians together, the right ones. Whether you’re looking to form a band or just want a good weekend jam, RiffMatch helps you find your people.
 
 Login Page :
-![bg-wp](https://github.com/user-attachments/assets/e8f27ec7-9786-4b7b-af1c-b8fb6ed41608)
+<img width="1395" alt="Screenshot 2025-05-31 at 12 41 37 AM" src="https://github.com/user-attachments/assets/29eb153e-5be9-476d-9453-408a23b1b48c" />
 
 Main Menu :
 <img width="1398" alt="Screenshot 2025-06-06 at 2 16 32 AM" src="https://github.com/user-attachments/assets/2df16400-6911-4d18-a823-d127142a982c" />
